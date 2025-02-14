@@ -29,12 +29,11 @@ function transformStateWithClones(state, actions) {
         break;
 
       case 'clear':
-        newState = {};
-        actionsResult.push({});
+        for (const i in newState) {
+          delete newState[i];
+        }
+        actionsResult.push({ ...newState });
         break;
-
-      default:
-        return null;
     }
   }
 
